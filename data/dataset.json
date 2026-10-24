@@ -1,0 +1,266 @@
+{
+  "count": 15000,
+  "answerable": 7500,
+  "refusalRequired": 7500,
+  "medianCost": 2.0000000922125825,
+  "histogram": [
+    {
+      "low": 0.0625,
+      "high": 0.08838834764831845,
+      "count": 16
+    },
+    {
+      "low": 0.08838834764831845,
+      "high": 0.125,
+      "count": 45
+    },
+    {
+      "low": 0.125,
+      "high": 0.1767766952966369,
+      "count": 119
+    },
+    {
+      "low": 0.1767766952966369,
+      "high": 0.25,
+      "count": 240
+    },
+    {
+      "low": 0.25,
+      "high": 0.3535533905932738,
+      "count": 376
+    },
+    {
+      "low": 0.3535533905932738,
+      "high": 0.5,
+      "count": 654
+    },
+    {
+      "low": 0.5,
+      "high": 0.7071067811865476,
+      "count": 971
+    },
+    {
+      "low": 0.7071067811865476,
+      "high": 1.0,
+      "count": 1527
+    },
+    {
+      "low": 1.0,
+      "high": 1.4142135623730951,
+      "count": 1779
+    },
+    {
+      "low": 1.4142135623730951,
+      "high": 2.0,
+      "count": 1773
+    },
+    {
+      "low": 2.0,
+      "high": 2.8284271247461903,
+      "count": 1623
+    },
+    {
+      "low": 2.8284271247461903,
+      "high": 4.0,
+      "count": 1371
+    },
+    {
+      "low": 4.0,
+      "high": 5.656854249492381,
+      "count": 1180
+    },
+    {
+      "low": 5.656854249492381,
+      "high": 8.0,
+      "count": 961
+    },
+    {
+      "low": 8.0,
+      "high": 11.313708498984761,
+      "count": 764
+    },
+    {
+      "low": 11.313708498984761,
+      "high": 16.0,
+      "count": 578
+    },
+    {
+      "low": 16.0,
+      "high": 22.627416997969522,
+      "count": 369
+    },
+    {
+      "low": 22.627416997969522,
+      "high": 32.0,
+      "count": 262
+    },
+    {
+      "low": 32.0,
+      "high": 45.254833995939045,
+      "count": 166
+    },
+    {
+      "low": 45.254833995939045,
+      "high": 64.0,
+      "count": 168
+    },
+    {
+      "low": 64.0,
+      "high": 90.50966799187809,
+      "count": 51
+    },
+    {
+      "low": 90.50966799187809,
+      "high": 128.0,
+      "count": 7
+    }
+  ],
+  "domains": [
+    {
+      "name": "Cross-domain",
+      "count": 1982,
+      "q1": 1.256321505521365,
+      "median": 1.8498380251324564,
+      "q3": 2.8070919064974817
+    },
+    {
+      "name": "Humanities & Arts",
+      "count": 418,
+      "q1": 1.2695849280815736,
+      "median": 2.001472881836683,
+      "q3": 3.0141179426692277
+    },
+    {
+      "name": "Mathematics",
+      "count": 645,
+      "q1": 1.5233039831478938,
+      "median": 2.4185813941968615,
+      "q3": 3.619598854244915
+    },
+    {
+      "name": "Social Sciences & Ethics",
+      "count": 327,
+      "q1": 1.7908858224825965,
+      "median": 2.5828988182423824,
+      "q3": 3.6260104728782023
+    },
+    {
+      "name": "Natural Sciences",
+      "count": 661,
+      "q1": 1.7097931945281895,
+      "median": 2.842694669892415,
+      "q3": 5.000178545635841
+    },
+    {
+      "name": "Environment",
+      "count": 100,
+      "q1": 2.306765712787298,
+      "median": 3.2839942692630024,
+      "q3": 5.614943617820313
+    },
+    {
+      "name": "Computing & Engineering",
+      "count": 932,
+      "q1": 2.535307971191953,
+      "median": 3.857513211078981,
+      "q3": 5.876226403332427
+    },
+    {
+      "name": "Business & Economics",
+      "count": 558,
+      "q1": 2.8497381377753745,
+      "median": 4.853283439013374,
+      "q3": 8.4629537349686
+    },
+    {
+      "name": "Law & Governance",
+      "count": 1184,
+      "q1": 4.725408721827505,
+      "median": 7.70137255354739,
+      "q3": 12.105962996112648
+    },
+    {
+      "name": "Medicine & Health",
+      "count": 693,
+      "q1": 14.982641102878217,
+      "median": 30.058844875940224,
+      "q3": 48.27918148503767
+    }
+  ],
+  "sources": [
+    {
+      "name": "m-a-p/SuperGPQA",
+      "count": 1350
+    },
+    {
+      "name": "nguha/legalbench",
+      "count": 1000
+    },
+    {
+      "name": "bigcode/bigcodebench",
+      "count": 550
+    },
+    {
+      "name": "TIGER-Lab/mmlu-pro",
+      "count": 500
+    },
+    {
+      "name": "openai/gsm8k",
+      "count": 500
+    },
+    {
+      "name": "bigbio/med_qa",
+      "count": 500
+    },
+    {
+      "name": "cais/mmlu",
+      "count": 500
+    },
+    {
+      "name": "rajpurkar/squad_v2",
+      "count": 400
+    },
+    {
+      "name": "shunk031/halu_eval",
+      "count": 400
+    },
+    {
+      "name": "hotpotqa/hotpot_qa",
+      "count": 400
+    },
+    {
+      "name": "allenai/ai2_arc",
+      "count": 300
+    },
+    {
+      "name": "maxzoech/fever",
+      "count": 300
+    },
+    {
+      "name": "truthfulqa/truthful_qa",
+      "count": 250
+    },
+    {
+      "name": "akariasai/pop_qa",
+      "count": 250
+    },
+    {
+      "name": "PatronusAI/financebench",
+      "count": 150
+    },
+    {
+      "name": "openai/openai_humaneval",
+      "count": 117
+    },
+    {
+      "name": "MathArena/hmmt_feb_2026",
+      "count": 33
+    }
+  ],
+  "provenance": {
+    "source": "final_risk_manifest_15000.jsonl",
+    "annotation": "Best\u2013Worst Scaling, Bradley\u2013Terry aggregation",
+    "histogram": "Half-octave bins; logarithmic cost axis. All 15,000 records.",
+    "domains": "Answerable queries only. Median and interquartile range within each paper domain."
+  }
+}

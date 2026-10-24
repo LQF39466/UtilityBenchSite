@@ -1,0 +1,46 @@
+/* Seven fixed pages; only their contents transition, never the document. */
+html.deck-enabled{height:100%;overflow:hidden;scroll-behavior:auto!important;scroll-padding:0}
+.deck-enabled body{height:100dvh;overflow:hidden;overscroll-behavior:none}
+.deck-enabled main{position:relative;height:100dvh;isolation:isolate}
+.deck-enabled .page-screen{position:absolute;inset:0;height:100dvh;min-height:100dvh;padding-top:64px;border:0;opacity:0;visibility:hidden;pointer-events:none;overflow:clip;transition:opacity .22s ease,visibility 0s linear .22s}
+.deck-enabled .page-screen.is-active{opacity:1;visibility:visible;pointer-events:auto;z-index:2;transition:opacity .3s ease,visibility 0s}
+.deck-enabled .page-screen.is-leaving{visibility:visible;z-index:1}
+.deck-enabled .page-screen::after{display:none}
+.deck-enabled .reveal,.deck-enabled .reveal.visible{opacity:1;transform:none;transition:none}
+.deck-enabled .page-screen:not(.is-active) *,.deck-enabled body.dialog-open .page-screen *{animation-play-state:paused!important}
+.deck-enabled[data-document-hidden] .page-screen *{animation-play-state:paused!important}
+.deck-enabled .scroll-progress{transition:transform .65s var(--ease)}
+.deck-enabled .header a[aria-current=page]{color:#d4bbf1}
+.deck-enabled .page-screen h1[tabindex="-1"]:focus,.deck-enabled .page-screen h2[tabindex="-1"]:focus{outline:none}
+.page-nav{position:fixed;right:max(12px,calc((100vw - var(--canvas))/2 - 31px));top:50%;translate:0 -50%;z-index:25;display:flex;flex-direction:column;gap:3px}
+.page-nav button{display:grid;place-items:center;position:relative;width:28px;height:29px;padding:0;border-radius:15px}
+.page-dot{display:block;width:5px;height:5px;border-radius:4px;background:#847494;transition:height .3s var(--ease),background .3s,opacity .3s;opacity:.7}
+.page-nav button[aria-current=page] .page-dot{height:17px;background:linear-gradient(#d2b6f4,#9fbbef);opacity:1}.page-nav button:hover .page-dot{background:#d1b5f2;opacity:1}
+.page-nav-label{position:absolute;right:33px;top:50%;translate:5px -50%;font:18px/1.2 var(--ui-font);white-space:nowrap;padding:7px 11px;border:1px solid #b7a0d341;border-radius:5px;background:#13121bed;color:#d6c5e8;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .18s,translate .18s,visibility .18s}
+.page-nav button:hover .page-nav-label,.page-nav button:focus-visible .page-nav-label{opacity:1;visibility:visible;translate:0 -50%}
+.deck-enabled #citation>.footer{position:absolute;left:50%;bottom:12px;translate:-50% 0;width:var(--canvas);padding:0 44px;font-size:18px;height:28px}
+.deck-enabled #citation>.footer .brand{font-size:18px;font-weight:400;color:#a79bb7;gap:9px}.deck-enabled #citation>.footer .brand img{width:23px;height:23px}.deck-enabled #citation>.footer>span{font-size:18px;color:#998ba8}
+/* The mobile page can be read vertically before the next boundary gesture. */
+@media(max-width:760px){
+ .deck-enabled .page-screen{display:block;overflow-x:clip;overflow-y:auto;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-padding:0}
+ .deck-enabled .page-screen::-webkit-scrollbar{display:none}
+ .deck-enabled .page-screen>.screen{min-width:0;width:100%;min-height:calc(100dvh - 64px);height:auto}
+ .deck-enabled .hero-screen{padding-top:28px;padding-bottom:30px}
+ .page-nav{right:3px;gap:1px}.page-nav button{width:22px;height:27px}.page-dot{width:4px;height:4px}.page-nav button[aria-current=page] .page-dot{height:13px}.page-nav-label{right:25px}
+ .page-nav button:hover:not(:focus-visible) .page-nav-label{opacity:0;visibility:hidden}
+ .deck-enabled #citation>.footer{position:static;translate:none;width:100%;height:auto;padding:0 22px 28px;gap:14px;flex-wrap:nowrap}.deck-enabled #citation>.footer .brand{width:auto;white-space:nowrap}.deck-enabled #citation>.footer>span{width:auto;white-space:nowrap}
+}
+@media(prefers-reduced-motion:reduce){.deck-enabled .page-screen,.deck-enabled .scroll-progress,.page-dot,.page-nav-label{transition:none}}
+
+/* View switches share the leaderboard title row to leave room for the data. */
+.results-screen .benchmark-tabs{border:1px solid #bca3dd36;border-radius:7px;gap:0;min-height:44px;overflow:hidden}
+.results-screen .benchmark-tabs>button{font-size:18px;padding:8px 14px;line-height:1.5;color:#aca2bc;transition:background .2s,color .2s}
+.results-screen .benchmark-tabs>button[aria-selected=true]{background:#b89bdf16;color:#e1d3f2}
+.results-screen .benchmark-tabs>button::after{display:none}
+.leaderboard-controls{padding-block:12px}
+@media(min-width:761px){
+ .deck-enabled .usage-layout{height:calc(var(--canvas)*9/16);min-height:0}
+ .deck-enabled .code-window{min-width:0;min-height:0;max-height:100%;display:flex;flex-direction:column}
+ .deck-enabled .code-header,.deck-enabled .code-caption{flex-shrink:0}
+ .deck-enabled .code-window pre{flex:1;min-height:0}
+}

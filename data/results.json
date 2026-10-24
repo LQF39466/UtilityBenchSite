@@ -1,0 +1,615 @@
+{
+  "models": [
+    {
+      "name": "GPT-5",
+      "family": "GPT",
+      "auc": 0.7346,
+      "answerable": 60.83,
+      "refusal": 79.6,
+      "rate": 53.17
+    },
+    {
+      "name": "GPT-5.1",
+      "family": "GPT",
+      "auc": 0.7167,
+      "answerable": 67.6,
+      "refusal": 74.13,
+      "rate": 60.73
+    },
+    {
+      "name": "GPT-5.4 Mini",
+      "family": "GPT",
+      "auc": 0.6352,
+      "answerable": 59.79,
+      "refusal": 59.49,
+      "rate": 65.56
+    },
+    {
+      "name": "GPT-5.6 Luna",
+      "family": "GPT",
+      "auc": 0.6991,
+      "answerable": 61.32,
+      "refusal": 78.53,
+      "rate": 54.93
+    },
+    {
+      "name": "GPT-5.6 Sol",
+      "family": "GPT",
+      "auc": 0.7298,
+      "answerable": 74.97,
+      "refusal": 62.44,
+      "rate": 67.44
+    },
+    {
+      "name": "Gemini 3 Flash",
+      "family": "Gemini",
+      "auc": 0.8132,
+      "answerable": 71.91,
+      "refusal": 86.55,
+      "rate": 51.87
+    },
+    {
+      "name": "Gemini 3.5 Flash",
+      "family": "Gemini",
+      "auc": 0.8202,
+      "answerable": 60.61,
+      "refusal": 90.41,
+      "rate": 41.41
+    },
+    {
+      "name": "Gemini 3.6 Flash",
+      "family": "Gemini",
+      "auc": 0.8232,
+      "answerable": 61.72,
+      "refusal": 91.88,
+      "rate": 42.71
+    },
+    {
+      "name": "Claude Haiku 4.5",
+      "family": "Claude",
+      "auc": 0.6676,
+      "answerable": 65.99,
+      "refusal": 76.44,
+      "rate": 60.07
+    },
+    {
+      "name": "Claude Sonnet 5",
+      "family": "Claude",
+      "auc": 0.7786,
+      "answerable": 70.03,
+      "refusal": 81.88,
+      "rate": 53.05
+    },
+    {
+      "name": "DeepSeek V3.2",
+      "family": "DeepSeek",
+      "auc": 0.7511,
+      "answerable": 54.67,
+      "refusal": 87.48,
+      "rate": 44.5
+    },
+    {
+      "name": "DeepSeek V4 Flash (Preview)",
+      "family": "DeepSeek",
+      "auc": 0.7273,
+      "answerable": 57.76,
+      "refusal": 85.59,
+      "rate": 49.21
+    },
+    {
+      "name": "DeepSeek V4 Pro (Preview)",
+      "family": "DeepSeek",
+      "auc": 0.7529,
+      "answerable": 55.71,
+      "refusal": 88.28,
+      "rate": 46.0
+    },
+    {
+      "name": "Qwen3.5 Plus",
+      "family": "Qwen",
+      "auc": 0.7573,
+      "answerable": 60.95,
+      "refusal": 87.97,
+      "rate": 47.47
+    },
+    {
+      "name": "Qwen3.7 Plus",
+      "family": "Qwen",
+      "auc": 0.7678,
+      "answerable": 67.79,
+      "refusal": 84.88,
+      "rate": 53.51
+    },
+    {
+      "name": "GLM-5",
+      "family": "GLM",
+      "auc": 0.7426,
+      "answerable": 58.91,
+      "refusal": 86.03,
+      "rate": 47.81
+    },
+    {
+      "name": "GLM-5.2",
+      "family": "GLM",
+      "auc": 0.765,
+      "answerable": 62.84,
+      "refusal": 86.09,
+      "rate": 49.4
+    },
+    {
+      "name": "MiMo V2.5",
+      "family": "MiMo",
+      "auc": 0.7477,
+      "answerable": 60.49,
+      "refusal": 82.07,
+      "rate": 49.9
+    },
+    {
+      "name": "MiMo V2.5 Pro",
+      "family": "MiMo",
+      "auc": 0.7187,
+      "answerable": 64.59,
+      "refusal": 76.85,
+      "rate": 54.94
+    },
+    {
+      "name": "Kimi K2.6",
+      "family": "Kimi",
+      "auc": 0.7732,
+      "answerable": 67.44,
+      "refusal": 83.83,
+      "rate": 50.83
+    }
+  ],
+  "thinking": [
+    {
+      "name": "GPT-5.6 Luna",
+      "mode": "Off",
+      "auc": 0.6991,
+      "answerable": 61.32,
+      "refusal": 78.53,
+      "rate": 54.93
+    },
+    {
+      "name": "GPT-5.6 Luna",
+      "mode": "Low",
+      "auc": 0.7316,
+      "answerable": 75.47,
+      "refusal": 65.97,
+      "rate": 64.73,
+      "reportedChange": {
+        "auc": 0.0325,
+        "answerable": 14.15,
+        "refusal": -12.56,
+        "rate": 9.81
+      }
+    },
+    {
+      "name": "GPT-5.6 Luna",
+      "mode": "Medium",
+      "auc": 0.7294,
+      "answerable": 75.88,
+      "refusal": 63.48,
+      "rate": 66.09,
+      "reportedChange": {
+        "auc": 0.0302,
+        "answerable": 14.56,
+        "refusal": -15.05,
+        "rate": 11.17
+      }
+    },
+    {
+      "name": "GPT-5.6 Luna",
+      "mode": "High",
+      "auc": 0.7317,
+      "answerable": 76.59,
+      "refusal": 62.52,
+      "rate": 66.77,
+      "reportedChange": {
+        "auc": 0.0325,
+        "answerable": 15.27,
+        "refusal": -16.01,
+        "rate": 11.85
+      }
+    },
+    {
+      "name": "DeepSeek V4 Flash (Preview)",
+      "mode": "Off",
+      "auc": 0.7273,
+      "answerable": 57.76,
+      "refusal": 85.59,
+      "rate": 49.21
+    },
+    {
+      "name": "DeepSeek V4 Flash (Preview)",
+      "mode": "On",
+      "auc": 0.7293,
+      "answerable": 75.85,
+      "refusal": 68.39,
+      "rate": 63.6,
+      "reportedChange": {
+        "auc": 0.002,
+        "answerable": 18.09,
+        "refusal": -17.2,
+        "rate": 14.39
+      }
+    },
+    {
+      "name": "Qwen3.7 Plus",
+      "mode": "Off",
+      "auc": 0.7678,
+      "answerable": 67.79,
+      "refusal": 84.88,
+      "rate": 53.51
+    },
+    {
+      "name": "Qwen3.7 Plus",
+      "mode": "On",
+      "auc": 0.7666,
+      "answerable": 75.05,
+      "refusal": 76.36,
+      "rate": 57.69,
+      "reportedChange": {
+        "auc": -0.0012,
+        "answerable": 7.26,
+        "refusal": -8.52,
+        "rate": 4.18
+      }
+    },
+    {
+      "name": "MiMo V2.5",
+      "mode": "Off",
+      "auc": 0.7477,
+      "answerable": 60.49,
+      "refusal": 82.07,
+      "rate": 49.9
+    },
+    {
+      "name": "MiMo V2.5",
+      "mode": "On",
+      "auc": 0.6908,
+      "answerable": 73.67,
+      "refusal": 57.61,
+      "rate": 68.93,
+      "reportedChange": {
+        "auc": -0.0569,
+        "answerable": 13.18,
+        "refusal": -24.46,
+        "rate": 19.03
+      }
+    }
+  ],
+  "prompting": [
+    {
+      "name": "DeepSeek V4 Flash (Preview)",
+      "prompt": "None",
+      "auc": 0.6055,
+      "answerable": 63.47,
+      "refusal": 43.61,
+      "rate": 78.11
+    },
+    {
+      "name": "DeepSeek V4 Flash (Preview)",
+      "prompt": "Refusal Hint",
+      "auc": 0.7273,
+      "answerable": 57.76,
+      "refusal": 85.59,
+      "rate": 49.21
+    },
+    {
+      "name": "DeepSeek V4 Flash (Preview)",
+      "prompt": "Consequence-Guided",
+      "auc": 0.7493,
+      "answerable": 62.51,
+      "refusal": 79.79,
+      "rate": 57.23
+    },
+    {
+      "name": "Qwen3.7 Plus",
+      "prompt": "None",
+      "auc": 0.6628,
+      "answerable": 73.47,
+      "refusal": 54.92,
+      "rate": 72.29
+    },
+    {
+      "name": "Qwen3.7 Plus",
+      "prompt": "Refusal Hint",
+      "auc": 0.7678,
+      "answerable": 67.79,
+      "refusal": 84.88,
+      "rate": 53.51
+    },
+    {
+      "name": "Qwen3.7 Plus",
+      "prompt": "Consequence-Guided",
+      "auc": 0.6663,
+      "answerable": 73.71,
+      "refusal": 63.35,
+      "rate": 67.71
+    },
+    {
+      "name": "MiMo V2.5",
+      "prompt": "None",
+      "auc": 0.6212,
+      "answerable": 68.29,
+      "refusal": 49.97,
+      "rate": 74.87
+    },
+    {
+      "name": "MiMo V2.5",
+      "prompt": "Refusal Hint",
+      "auc": 0.7477,
+      "answerable": 60.49,
+      "refusal": 82.07,
+      "rate": 49.9
+    },
+    {
+      "name": "MiMo V2.5",
+      "prompt": "Consequence-Guided",
+      "auc": 0.7238,
+      "answerable": 59.11,
+      "refusal": 78.03,
+      "rate": 52.99
+    },
+    {
+      "name": "GPT-5.6 Luna",
+      "prompt": "None",
+      "auc": 0.6301,
+      "answerable": 66.99,
+      "refusal": 42.05,
+      "rate": 78.91
+    },
+    {
+      "name": "GPT-5.6 Luna",
+      "prompt": "Refusal Hint",
+      "auc": 0.6991,
+      "answerable": 61.32,
+      "refusal": 78.53,
+      "rate": 54.93
+    },
+    {
+      "name": "GPT-5.6 Luna",
+      "prompt": "Consequence-Guided",
+      "auc": 0.6424,
+      "answerable": 66.49,
+      "refusal": 52.31,
+      "rate": 73.09
+    }
+  ],
+  "domains": [
+    {
+      "domain": "Mathematics",
+      "model": "Gemini 3.6 Flash",
+      "count": 645,
+      "meanCost": 2.850462361210524,
+      "correct": 0.7395348837209302,
+      "wrong": -0.6932930563625711,
+      "refuse": -0.10852713178294573
+    },
+    {
+      "domain": "Cross-domain",
+      "model": "Gemini 3.6 Flash",
+      "count": 1982,
+      "meanCost": 2.2962074007609545,
+      "correct": 0.7386478304742684,
+      "wrong": -0.11130851637361809,
+      "refuse": -0.44904137235116043
+    },
+    {
+      "domain": "Natural Sciences",
+      "model": "Gemini 3.6 Flash",
+      "count": 661,
+      "meanCost": 3.84724163556338,
+      "correct": 0.7760968229954615,
+      "wrong": -0.5048560148659142,
+      "refuse": -0.25113464447806355
+    },
+    {
+      "domain": "Humanities & Arts",
+      "model": "Gemini 3.6 Flash",
+      "count": 418,
+      "meanCost": 2.3103340464763122,
+      "correct": 0.507177033492823,
+      "wrong": -0.364501756993651,
+      "refuse": -0.6794258373205742
+    },
+    {
+      "domain": "Social Sciences & Ethics",
+      "model": "Gemini 3.6 Flash",
+      "count": 327,
+      "meanCost": 3.157978394110667,
+      "correct": 0.5290519877675841,
+      "wrong": -0.38429591818494635,
+      "refuse": -0.6483180428134556
+    },
+    {
+      "domain": "Environment",
+      "model": "Gemini 3.6 Flash",
+      "count": 100,
+      "meanCost": 4.819910818495551,
+      "correct": 0.47,
+      "wrong": -0.850984512280451,
+      "refuse": -0.78
+    },
+    {
+      "domain": "Computing & Engineering",
+      "model": "Gemini 3.6 Flash",
+      "count": 932,
+      "meanCost": 4.701891184408867,
+      "correct": 0.34120171673819744,
+      "wrong": -2.720170756090557,
+      "refuse": -0.18240343347639484
+    },
+    {
+      "domain": "Business & Economics",
+      "model": "Gemini 3.6 Flash",
+      "count": 558,
+      "meanCost": 7.193603550525496,
+      "correct": 0.6093189964157706,
+      "wrong": -1.0653353853707177,
+      "refuse": -0.4838709677419355
+    },
+    {
+      "domain": "Law & Governance",
+      "model": "Gemini 3.6 Flash",
+      "count": 1184,
+      "meanCost": 9.427803679320556,
+      "correct": 0.46621621621621623,
+      "wrong": -0.9585939191276754,
+      "refuse": -0.9121621621621622
+    },
+    {
+      "domain": "Medicine & Health",
+      "model": "Gemini 3.6 Flash",
+      "count": 693,
+      "meanCost": 32.81297016645189,
+      "correct": 0.7691197691197691,
+      "wrong": -2.676301917404478,
+      "refuse": -0.26551226551226553
+    },
+    {
+      "domain": "AbstentionBench",
+      "model": "Gemini 3.6 Flash",
+      "count": 7500,
+      "meanCost": 3.0819110574358137,
+      "correct": 0.9188,
+      "wrong": -0.5003137755490983,
+      "refuse": 0.0
+    },
+    {
+      "domain": "Mathematics",
+      "model": "GPT-5.6 Sol",
+      "count": 645,
+      "meanCost": 2.850462361210524,
+      "correct": 0.7705426356589147,
+      "wrong": -0.7455631967366422,
+      "refuse": -0.027906976744186046
+    },
+    {
+      "domain": "Cross-domain",
+      "model": "GPT-5.6 Sol",
+      "count": 1982,
+      "meanCost": 2.2962074007609545,
+      "correct": 0.8657921291624622,
+      "wrong": -0.2138488140457343,
+      "refuse": -0.12512613521695257
+    },
+    {
+      "domain": "Natural Sciences",
+      "model": "GPT-5.6 Sol",
+      "count": 661,
+      "meanCost": 3.84724163556338,
+      "correct": 0.8577912254160364,
+      "wrong": -0.641522663896532,
+      "refuse": -0.02723146747352496
+    },
+    {
+      "domain": "Humanities & Arts",
+      "model": "GPT-5.6 Sol",
+      "count": 418,
+      "meanCost": 2.3103340464763122,
+      "correct": 0.6555023923444976,
+      "wrong": -0.7156152454541773,
+      "refuse": -0.05263157894736842
+    },
+    {
+      "domain": "Social Sciences & Ethics",
+      "model": "GPT-5.6 Sol",
+      "count": 327,
+      "meanCost": 3.157978394110667,
+      "correct": 0.7125382262996942,
+      "wrong": -0.6358975896119486,
+      "refuse": -0.04892966360856269
+    },
+    {
+      "domain": "Environment",
+      "model": "GPT-5.6 Sol",
+      "count": 100,
+      "meanCost": 4.819910818495551,
+      "correct": 0.59,
+      "wrong": -1.7736247136552263,
+      "refuse": -0.08
+    },
+    {
+      "domain": "Computing & Engineering",
+      "model": "GPT-5.6 Sol",
+      "count": 932,
+      "meanCost": 4.701891184408867,
+      "correct": 0.3927038626609442,
+      "wrong": -2.8735046169986362,
+      "refuse": -0.02575107296137339
+    },
+    {
+      "domain": "Business & Economics",
+      "model": "GPT-5.6 Sol",
+      "count": 558,
+      "meanCost": 7.193603550525496,
+      "correct": 0.7383512544802867,
+      "wrong": -1.9750378328649174,
+      "refuse": -0.03942652329749104
+    },
+    {
+      "domain": "Law & Governance",
+      "model": "GPT-5.6 Sol",
+      "count": 1184,
+      "meanCost": 9.427803679320556,
+      "correct": 0.7719594594594594,
+      "wrong": -2.198650329034954,
+      "refuse": -0.0033783783783783786
+    },
+    {
+      "domain": "Medicine & Health",
+      "model": "GPT-5.6 Sol",
+      "count": 693,
+      "meanCost": 32.81297016645189,
+      "correct": 0.8441558441558441,
+      "wrong": -3.604107310657357,
+      "refuse": -0.031746031746031744
+    },
+    {
+      "domain": "AbstentionBench",
+      "model": "GPT-5.6 Sol",
+      "count": 7500,
+      "meanCost": 3.0819110574358137,
+      "correct": 0.6244,
+      "wrong": -1.6029624913589886,
+      "refuse": 0.0
+    }
+  ],
+  "domainOrder": [
+    "Mathematics",
+    "Cross-domain",
+    "Natural Sciences",
+    "Humanities & Arts",
+    "Social Sciences & Ethics",
+    "Environment",
+    "Computing & Engineering",
+    "Business & Economics",
+    "Law & Governance",
+    "Medicine & Health",
+    "AbstentionBench"
+  ],
+  "provenance": {
+    "paper": "iclr2027_conference.tex",
+    "tables": [
+      "tab:model-evaluation",
+      "tab:thinking-evaluation",
+      "tab:prompt-strategy"
+    ],
+    "figures": [
+      "fig:main-model-3d",
+      "fig:sol-gemini-domain"
+    ],
+    "records": 15000,
+    "refusalCost": 2,
+    "prompt": "Refusal Hint",
+    "scores": "binary action",
+    "mode": "non-thinking",
+    "domainSources": [
+      "outputs/model_evaluations_cost_aware/refusal_only_nonthinking/gemini-3.6-flash_minimal/enhanced_predictions.jsonl",
+      "outputs/model_evaluations_cost_aware/refusal_only_nonthinking/gpt-5.6-sol_nonthinking/enhanced_predictions.jsonl"
+    ],
+    "domainUnits": "Mean utility per record within each domain. Figure 4 view divides each outcome component by the largest positive or negative stack among the two models in that domain."
+  }
+}
