@@ -4,10 +4,10 @@ import {modelLabel,benchmarkRuns} from './models.js';
 import {modelPosition,logPosition,projectPoint,paperCamera,plotAxes} from './plot.js';
 const $=s=>document.querySelector(s);
 export function initBenchmark(data,sensitivity){
-  const runs=benchmarkRuns(data),main=runs.filter(m=>m.mode==='NT');
-  const families=new Set(Object.keys(colors)),modes=new Set(['NT']),costs=sensitivity.costs,sweep=new Map(sensitivity.runs.map(r=>[r.id,r.auc]));
+  const runs=benchmarkRuns(data);
+  const families=new Set(Object.keys(colors)),modes=new Set(['NT','T']),costs=sensitivity.costs,sweep=new Map(sensitivity.runs.map(r=>[r.id,r.auc]));
   let costIndex=costs.indexOf(2);
-  let selected=sortModels(main)[0].id,camera={...paperCamera},sortKey='auc',direction='desc';
+  let selected=sortModels(runs)[0].id,camera={...paperCamera},sortKey='auc',direction='desc';
   let pointer=null,dragMoved=false,scatterFrame=0;
   function scheduleScatter(){if(!scatterFrame)scatterFrame=requestAnimationFrame(()=>{scatterFrame=0;drawScatter();});}
   const svg=$('#scatter'),tabs=[...document.querySelectorAll('[data-benchmark-view]')];
