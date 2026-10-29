@@ -611,5 +611,34 @@
       "outputs/model_evaluations_cost_aware/refusal_only_nonthinking/gpt-5.6-sol_nonthinking/enhanced_predictions.jsonl"
     ],
     "domainUnits": "Mean utility per record within each domain. Figure 4 view divides each outcome component by the largest positive or negative stack among the two models in that domain."
-  }
+  },
+  "additionalRuns": [
+    {
+      "name": "Gemini 4 Argon",
+      "family": "Gemini",
+      "mode": "T",
+      "auc": 0.8419,
+      "answerable": 73.44,
+      "refusal": 85.55,
+      "rate": 48.76
+    },
+    {
+      "name": "MiMo V2.6 Flash",
+      "family": "MiMo",
+      "mode": "NT",
+      "auc": 0.6541,
+      "answerable": 67.55,
+      "refusal": 59.59,
+      "rate": 66.51
+    },
+    {
+      "name": "MiMo V2.6 Pro",
+      "family": "MiMo",
+      "mode": "NT",
+      "auc": 0.7257,
+      "answerable": 68.25,
+      "refusal": 71.07,
+      "rate": 58.23
+    }
+  ]
 }

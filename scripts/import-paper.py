@@ -97,5 +97,9 @@ for key,name in [('gemini-3.6-flash_minimal','Gemini 3.6 Flash'),('gpt-5.6-sol_n
 
 data = dict(models=models, thinking=thinking, prompting=prompting, domains=domains, domainOrder=domain_order,
     provenance=dict(paper='iclr2027_conference.tex', tables=['tab:model-evaluation','tab:thinking-evaluation','tab:prompt-strategy'], figures=['fig:main-model-3d','fig:sol-gemini-domain'], records=15000, refusalCost=2, prompt='Refusal Hint', scores='binary action', mode='non-thinking', domainSources=sources, domainUnits='Mean utility per record within each domain. Figure 4 view divides each outcome component by the largest positive or negative stack among the two models in that domain.'))
-(root/'data/results.json').write_text(json.dumps(data,indent=2)+'\n')
+existing=root/'data/results.json'
+if existing.exists():
+    additional=json.loads(existing.read_text()).get('additionalRuns',[])
+    if additional:data['additionalRuns']=additional
+existing.write_text(json.dumps(data,indent=2)+'\n')
 print('Exported 20 models, 10 thinking rows, 12 prompt rows, and 22 domain-model rows; source accuracies verified.')

@@ -42,7 +42,7 @@ Usage 仅展示 Hugging Face `load_dataset` 导入示例，支持复制；左侧
 - 翻页只动画处理 opacity 和 transform；标题、正文、图表及主视觉按不同距离和时序进场。离场页面不可聚焦，CSS 动画暂停，自动播放时钟只在当前可见页面运行。尊重 reduced-motion 设置。
 - `index.html`：首屏品牌 → Leaderboard + 三维图 → 数据集特性与成本分布 → 方法重点 → 发现 → Usage → Citations。案例、数据集来源、效用公式与评测设置通过弹窗展开。
 - 仅保留 `index.html`。Thinking、Prompting 和 GPT / Gemini 领域分析均在 Findings 呈现；Thinking 直接展示全部运行，Prompting 的弹窗展示两个实际 prompt；Thinking 与 GPT / Gemini 不提供结果弹窗。独立结果页已删除。
-- 排行榜显示完整指标、品牌 logo 与 T/NT 标记，支持搜索、多选家族/思考模式 Badge、排序、CSV。C_R 滑块使用论文的 0、0.25、0.5、1、2、3、4、8、16、32、64；默认 2。切换时更新真实 UtilityAUC、排名与三维坐标，准确率和作答率保持原始观测值。默认 20 条 NT 结果；T 为 Table 2 的 6 条思考实验，GPT 的三种推理强度分别保留。三维图使用对数坐标与竖直投影线，选中 T 结果时在主对比中加入该条实验。
+- 排行榜显示完整指标、品牌 logo 与 T/NT 标记，支持搜索、多选家族/思考模式 Badge、排序、CSV。C_R 滑块使用论文的 0、0.25、0.5、1、2、3、4、8、16、32、64；默认 2。切换时更新真实 UtilityAUC、排名与三维坐标，准确率和作答率保持原始观测值。默认 22 条 NT 结果；T 包括论文中的 6 条思考实验及新增的 Gemini 4 Argon，GPT 的三种推理强度分别保留。三维图使用对数坐标与竖直投影线，选中 T 结果时在主对比中加入该条实验。
 - Method 的三个步骤按 01–03 自动播放：等成本与样本成本对比、纵向三种效用值、论文原曲线与 Coverage 滑块。点击样本可查看原问题。Method 02 的详细说明依次介绍即时效用、共享后续处理预算、固定 shadow price 和评测超参；公式使用 MathML。
 - Findings 按 01–04 自动播放：三模型的 accuracy / UtilityAUC 上下成对对比、Thinking 的六组设置、三种 Prompt、GPT vs Gemini 的 11 个领域分解。每个 Thinking run 紧密堆叠四项指标，标出对应 NT 基线、T 原始值及论文报告的增减；列表纵向滚动，不切换指标。四图不显示底部坐标轴和刻度，只保留必要图例与数值。
 - 轮播只在内容可见时计时；手动选择标签、操作图表或打开细节后保持暂停，点击 Play 恢复，支持键盘导航。弹窗打开或页面隐藏时也停止计时。文本与图表分别使用轻量入场动画。
@@ -53,7 +53,7 @@ Usage 仅展示 Hugging Face `load_dataset` 导入示例，支持复制；左侧
 
 `data/dataset.json` 保存全部 15,000 条样本的成本直方图、17 个可回答来源的样本数（加 AbstentionBench 共 18 个来源），以及 10 个分析分组的成本中位数/四分位数。成本轴使用对数刻度；领域摘要仅覆盖 7,500 条可回答样本。
 
-`data/refusal-costs.json` 是固定响应与二元分数在 11 个 C_R 值上的真实重算结果，覆盖 20 条 NT 与 6 条 T 运行；每个成本重新计算共享的最佳/最差面积，默认值与论文精度一致。用 `python3 scripts/import-refusal-costs.py --evaluation-root /path/to/RSC-AUC` 更新。
+`data/refusal-costs.json` 是固定响应与二元分数在 11 个 C_R 值上的真实重算结果，覆盖 22 条 NT 与 7 条 T 运行；每个成本重新计算共享的最佳/最差面积，默认值与论文精度一致。用 `python3 scripts/import-refusal-costs.py --evaluation-root /path/to/RSC-AUC` 更新。
 
 `data/results.json` 是论文当前版本的静态快照。模型名称和数值按所提供论文保留，不代表模型的外部实时可用状态。页面不会查询任何模型 API。
 
@@ -99,3 +99,5 @@ Dataset 的领域行及 Findings 01、03 在 PC 按剩余高度等分行距，�
 Leaderboard 的 All 是一次性的全选操作，不保留选中状态；家族与模式分别以各自 Badge 显示真实选择，全部取消时显示空结果。搜索框不显示紫色焦点外框。GPT / Gemini 领域图沿用原图的紫色与玫红色系，三类效用在各自色系内通过深浅区分；图例顺序与每个领域上下两条 Bar 一致。
 
 两处 Copy 共用 `src/clipboard.js`，在点击手势内发起 Clipboard API 与选区复制，成功后按钮短暂显示 Copied；浏览器阻止两种方式时隐藏不可用按钮，不再提示手动复制。
+
+2026-10-29 增加 Gemini 4 Argon（T）、MiMo V2.6 Flash / Pro（NT）。追加评测位于 `data/results.json` 的 `additionalRuns`，参与排行榜、筛选、CSV 和三维图，论文原始对照实验保持独立。UtilityAUC 显示四位小数，百分比显示两位。`scripts/import-output.py --dataset /path/to/test.parquet` 从 `output/*/result.json` 验证完整记录并重算全部 11 档拒答成本；只导出聚合指标。Gemini 4 Argon 超出原 UtilityAUC 轴上限时，三维图自动扩展该轴。

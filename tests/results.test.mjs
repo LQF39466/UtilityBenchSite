@@ -62,8 +62,8 @@ test('paper camera preserves vertical floor projections',async()=>{
 });
 test('thinking runs retain distinct identities without duplicating baselines',async()=>{
   const {benchmarkRuns}=await import('../src/models.js');const runs=benchmarkRuns(data);
-  assert.equal(runs.length,26);assert.equal(new Set(runs.map(m=>m.id)).size,26);
-  assert.equal(runs.filter(m=>m.mode==='NT').length,20);assert.equal(runs.filter(m=>m.mode==='T').length,6);
+  assert.equal(runs.length,29);assert.equal(new Set(runs.map(m=>m.id)).size,29);
+  assert.equal(runs.filter(m=>m.mode==='NT').length,22);assert.equal(runs.filter(m=>m.mode==='T').length,7);
   assert.deepEqual(runs.filter(m=>m.name==='GPT-5.6 Luna'&&m.mode==='T').map(m=>m.effort),['Low','Medium','High']);
 });
 
@@ -88,4 +88,14 @@ test('story comparisons cover the three paper examples and all thinking settings
   assert.ok(curve.points.length>50);
   for(let i=1;i<curve.points.length;i++)assert.ok(curve.points[i][0]>=curve.points[i-1][0]);
   assert.equal(curveAt(curve.points,0),curve.points[0][1]);assert.equal(curveAt(curve.points,1),curve.points.at(-1)[1]);
+});
+
+
+test('new output runs preserve names, thinking modes and published precision',()=>{
+  const expected=[
+    {name:'Gemini 4 Argon',family:'Gemini',mode:'T',auc:.8419,answerable:73.44,refusal:85.55,rate:48.76},
+    {name:'MiMo V2.6 Flash',family:'MiMo',mode:'NT',auc:.6541,answerable:67.55,refusal:59.59,rate:66.51},
+    {name:'MiMo V2.6 Pro',family:'MiMo',mode:'NT',auc:.7257,answerable:68.25,refusal:71.07,rate:58.23}
+  ];
+  for(const row of expected)assert.deepEqual(data.additionalRuns.find(r=>r.name===row.name),row);
 });

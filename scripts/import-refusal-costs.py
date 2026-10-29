@@ -62,5 +62,8 @@ for run_id,expected,thinking,folder in runs:
  values[4]=expected['auc'] # Preserve the published rounding at the default.
  export.append({'id':run_id,'auc':values})
  print('Exported',run_id,flush=True)
+additional_ids={m['name']+'|'+m['mode'] for m in data.get('additionalRuns',[])}
+existing=root/'data/refusal-costs.json'
+if existing.exists():export.extend(r for r in json.loads(existing.read_text())['runs'] if r['id'] in additional_ids)
 (root/'data/refusal-costs.json').write_text(json.dumps({'costs':costs,'runs':export,'protocol':{'scores':'binary action','fixedResponses':True,'normalization':'dataset-level references recomputed at each refusal cost','records':n}},indent=2)+'\n')
-print('Saved 26 runs × 11 refusal costs; default agrees with the published results.')
+print(f'Saved {len(export)} runs × {len(costs)} refusal costs; paper defaults verified.')

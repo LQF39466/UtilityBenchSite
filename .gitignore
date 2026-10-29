@@ -3,3 +3,4 @@ dist/
 ._*
 node_modules/
 test-results/
+output/

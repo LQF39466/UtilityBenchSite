@@ -30,9 +30,10 @@ export function initBenchmark(data,sensitivity){
     content+=`<polygon points="${[[0,0,0],[1,0,0],[1,1,0],[0,1,0]].map(pts).join(' ')}" fill="#b395db08"/>`;
     for(let axis=0;axis<3;axis++)for(let i=0;i<2;i++)for(let j=0;j<2;j++){const a=[0,0,0],b=[0,0,0];a[(axis+1)%3]=b[(axis+1)%3]=i;a[(axis+2)%3]=b[(axis+2)%3]=j;b[axis]=1;content+=line(a,b);}
     const axes={...plotAxes};
-    if(costs[costIndex]!==2){axes.auc=[Math.min(.625,...scope().map(m=>m.auc*.97)),Math.max(.835,...scope().map(m=>m.auc*1.03))];}
+    const expandAUC=costs[costIndex]!==2||scope().some(m=>m.auc<axes.auc[0]||m.auc>axes.auc[1]);
+    if(expandAUC){axes.auc=[Math.min(.625,...scope().map(m=>m.auc*.97)),Math.max(.835,...scope().map(m=>m.auc*1.03))];}
     const ticks={answerable:width<600?[55,63,74]:[55,60,63,68,74],refusal:height<400?[60,76,91]:[60,76,82,91],auc:height<400?[.64,.74,.78,.82]:[.64,.74,.76,.78,.82]};
-    if(costs[costIndex]!==2)ticks.auc=Array.from({length:4},(_,i)=>Number((axes.auc[0]+(axes.auc[1]-axes.auc[0])*i/3).toFixed(2)));
+    if(expandAUC)ticks.auc=Array.from({length:4},(_,i)=>Number((axes.auc[0]+(axes.auc[1]-axes.auc[0])*i/3).toFixed(2)));
     const text=(at,label,dx=0,dy=0,anchor='middle',cls='')=>{const [x,y]=P(at);return `<text x="${x+dx}" y="${y+dy}" text-anchor="${anchor}" class="${cls}">${label}</text>`;};
     for(const v of ticks.answerable){const t=logPosition(v,plotAxes.answerable);content+=line([t,0,0],[t,1,0],'#b49bd314')+text([t,0,0],v,0,25);}
     for(const v of ticks.refusal){const t=logPosition(v,plotAxes.refusal);content+=line([0,t,0],[1,t,0],'#b49bd314')+text([0,t,0],v,-13,5,'end');}
