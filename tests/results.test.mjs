@@ -62,8 +62,8 @@ test('paper camera preserves vertical floor projections',async()=>{
 });
 test('thinking runs retain distinct identities without duplicating baselines',async()=>{
   const {benchmarkRuns}=await import('../src/models.js');const runs=benchmarkRuns(data);
-  assert.equal(runs.length,33);assert.equal(new Set(runs.map(m=>m.id)).size,33);
-  assert.equal(runs.filter(m=>m.mode==='NT').length,24);assert.equal(runs.filter(m=>m.mode==='T').length,9);
+  assert.equal(runs.length,34);assert.equal(new Set(runs.map(m=>m.id)).size,34);
+  assert.equal(runs.filter(m=>m.mode==='NT').length,24);assert.equal(runs.filter(m=>m.mode==='T').length,10);
   assert.deepEqual(runs.filter(m=>m.name==='GPT-5.6 Luna'&&m.mode==='T').map(m=>m.effort),['Low','Medium','High']);
 });
 
@@ -93,7 +93,7 @@ test('story comparisons cover the three paper examples and all thinking settings
 
 test('new output runs preserve names, thinking modes and published precision',()=>{
   const expected=[
-    {name:'Gemini 4 Argon',family:'Gemini',mode:'T',auc:.8419,answerable:73.44,refusal:85.55,rate:48.76},
+    {name:'Gemini 4 Argon',family:'Gemini',mode:'T',effort:'Low',auc:.8419,answerable:73.44,refusal:85.55,rate:48.76},
     {name:'MiMo V2.6 Flash',family:'MiMo',mode:'NT',auc:.6541,answerable:67.55,refusal:59.59,rate:66.51},
     {name:'MiMo V2.6 Pro',family:'MiMo',mode:'NT',auc:.7257,answerable:68.25,refusal:71.07,rate:58.23}
   ];
@@ -101,7 +101,17 @@ test('new output runs preserve names, thinking modes and published precision',()
 });
 
 test('aggregate imports include all refusal costs and correct thinking modes',()=>{
- for(const [name,mode,auc] of [['GLM-5.3 Flash','T',.7205],['GPT-6 Astra','T',.8072],['GPT-6.1 Terra','NT',.7853],['Qwen3.8 Flash','NT',.7465]]){
+ for(const [name,mode,auc] of [['Claude Opus 5.5','T',.8021],['GLM-5.3 Flash','T',.7205],['GPT-6 Astra','T',.8072],['GPT-6.1 Terra','NT',.7853],['Qwen3.8 Flash','NT',.7465]]){
   const row=data.additionalRuns.find(r=>r.name===name);assert.equal(row.mode,mode);assert.equal(row.auc,auc);
+ }
+});
+
+test('additional thinking runs expose Low effort while NT runs do not',async()=>{
+ const {benchmarkRuns,modelLabel}=await import('../src/models.js');
+ const runs=benchmarkRuns(data);
+ for(const row of data.additionalRuns){
+  const run=runs.find(r=>r.name===row.name);
+  assert.equal(run.effort,row.mode==='T'?'Low':undefined);
+  if(row.mode==='T')assert.ok(modelLabel(run).includes('>Low</span>'));
  }
 });

@@ -620,7 +620,8 @@
       "auc": 0.8419,
       "answerable": 73.44,
       "refusal": 85.55,
-      "rate": 48.76
+      "rate": 48.76,
+      "effort": "Low"
     },
     {
       "name": "MiMo V2.6 Flash",
@@ -641,13 +642,24 @@
       "rate": 58.23
     },
     {
+      "name": "Claude Opus 5.5",
+      "family": "Claude",
+      "mode": "T",
+      "auc": 0.8021,
+      "answerable": 87.49,
+      "refusal": 70.97,
+      "rate": 63.09,
+      "effort": "Low"
+    },
+    {
       "name": "GLM-5.3 Flash",
       "family": "GLM",
       "mode": "T",
       "auc": 0.7205,
       "answerable": 75.61,
       "refusal": 65.73,
-      "rate": 64.15
+      "rate": 64.15,
+      "effort": "Low"
     },
     {
       "name": "GPT-6 Astra",
@@ -656,7 +668,8 @@
       "auc": 0.8072,
       "answerable": 82.03,
       "refusal": 70.65,
-      "rate": 61.13
+      "rate": 61.13,
+      "effort": "Low"
     },
     {
       "name": "GPT-6.1 Terra",

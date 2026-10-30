@@ -76,6 +76,7 @@ for folder, name, family, mode in [
            'answerable': round(metrics['answerable_accuracy']*100,2),
            'refusal': round(metrics['refusal_required_accuracy']*100,2),
            'rate': round(metrics['answer_rate']*100,2)}
+    if mode == 'T': row['effort'] = 'Low'
     new_runs.append(row)
     new_sweeps.append({'id': name+'|'+mode, 'auc': [round(a,4) for a in aucs]})
     print(row)
