@@ -4,7 +4,7 @@ from pathlib import Path
 root=Path(__file__).resolve().parents[1]
 data=json.loads((root/'data/results.json').read_text())
 sweep=json.loads((root/'data/refusal-costs.json').read_text())
-models=[('claude-opus-5-5-1030','Claude Opus 5.5','Claude','T'),('glm-5.3-flash-1029','GLM-5.3 Flash','GLM','T'),('gpt-6-astra-1030','GPT-6 Astra','GPT','T'),('gpt-6.1-terra-1029','GPT-6.1 Terra','GPT','NT'),('qwen3.8-flash-1029','Qwen3.8 Flash','Qwen','NT')]
+models=[('deepseek-flash-1030','DeepSeek V4.1 Flash (1017)','DeepSeek','NT'),('claude-opus-5-5-1030','Claude Opus 5.5','Claude','T'),('glm-5.3-flash-1029','GLM-5.3 Flash','GLM','T'),('gpt-6-astra-1030','GPT-6 Astra','GPT','T'),('gpt-6.1-terra-1029','GPT-6.1 Terra','GPT','NT'),('qwen3.8-flash-1029','Qwen3.8 Flash','Qwen','NT')]
 for folder,name,family,mode in models:
     source=json.loads((root/'output'/folder/'metrics.json').read_text())
     assert source['status']=='completed'

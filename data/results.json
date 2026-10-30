@@ -642,6 +642,15 @@
       "rate": 58.23
     },
     {
+      "name": "DeepSeek V4.1 Flash (1017)",
+      "family": "DeepSeek",
+      "mode": "NT",
+      "auc": 0.744,
+      "answerable": 65.12,
+      "refusal": 80.76,
+      "rate": 53.28
+    },
+    {
       "name": "Claude Opus 5.5",
       "family": "Claude",
       "mode": "T",

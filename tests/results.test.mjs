@@ -62,8 +62,8 @@ test('paper camera preserves vertical floor projections',async()=>{
 });
 test('thinking runs retain distinct identities without duplicating baselines',async()=>{
   const {benchmarkRuns}=await import('../src/models.js');const runs=benchmarkRuns(data);
-  assert.equal(runs.length,34);assert.equal(new Set(runs.map(m=>m.id)).size,34);
-  assert.equal(runs.filter(m=>m.mode==='NT').length,24);assert.equal(runs.filter(m=>m.mode==='T').length,10);
+  assert.equal(runs.length,35);assert.equal(new Set(runs.map(m=>m.id)).size,35);
+  assert.equal(runs.filter(m=>m.mode==='NT').length,25);assert.equal(runs.filter(m=>m.mode==='T').length,10);
   assert.deepEqual(runs.filter(m=>m.name==='GPT-5.6 Luna'&&m.mode==='T').map(m=>m.effort),['Low','Medium','High']);
 });
 
@@ -101,7 +101,7 @@ test('new output runs preserve names, thinking modes and published precision',()
 });
 
 test('aggregate imports include all refusal costs and correct thinking modes',()=>{
- for(const [name,mode,auc] of [['Claude Opus 5.5','T',.8021],['GLM-5.3 Flash','T',.7205],['GPT-6 Astra','T',.8072],['GPT-6.1 Terra','NT',.7853],['Qwen3.8 Flash','NT',.7465]]){
+ for(const [name,mode,auc] of [['DeepSeek V4.1 Flash (1017)','NT',.7440],['Claude Opus 5.5','T',.8021],['GLM-5.3 Flash','T',.7205],['GPT-6 Astra','T',.8072],['GPT-6.1 Terra','NT',.7853],['Qwen3.8 Flash','NT',.7465]]){
   const row=data.additionalRuns.find(r=>r.name===name);assert.equal(row.mode,mode);assert.equal(row.auc,auc);
  }
 });
