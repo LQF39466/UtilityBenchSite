@@ -639,6 +639,42 @@
       "answerable": 68.25,
       "refusal": 71.07,
       "rate": 58.23
+    },
+    {
+      "name": "GLM-5.3 Flash",
+      "family": "GLM",
+      "mode": "T",
+      "auc": 0.7205,
+      "answerable": 75.61,
+      "refusal": 65.73,
+      "rate": 64.15
+    },
+    {
+      "name": "GPT-6 Astra",
+      "family": "GPT",
+      "mode": "T",
+      "auc": 0.8072,
+      "answerable": 82.03,
+      "refusal": 70.65,
+      "rate": 61.13
+    },
+    {
+      "name": "GPT-6.1 Terra",
+      "family": "GPT",
+      "mode": "NT",
+      "auc": 0.7853,
+      "answerable": 78.52,
+      "refusal": 73.05,
+      "rate": 60.83
+    },
+    {
+      "name": "Qwen3.8 Flash",
+      "family": "Qwen",
+      "mode": "NT",
+      "auc": 0.7465,
+      "answerable": 64.45,
+      "refusal": 79.21,
+      "rate": 53.18
     }
   ]
 }

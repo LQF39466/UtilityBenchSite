@@ -62,8 +62,8 @@ test('paper camera preserves vertical floor projections',async()=>{
 });
 test('thinking runs retain distinct identities without duplicating baselines',async()=>{
   const {benchmarkRuns}=await import('../src/models.js');const runs=benchmarkRuns(data);
-  assert.equal(runs.length,29);assert.equal(new Set(runs.map(m=>m.id)).size,29);
-  assert.equal(runs.filter(m=>m.mode==='NT').length,22);assert.equal(runs.filter(m=>m.mode==='T').length,7);
+  assert.equal(runs.length,33);assert.equal(new Set(runs.map(m=>m.id)).size,33);
+  assert.equal(runs.filter(m=>m.mode==='NT').length,24);assert.equal(runs.filter(m=>m.mode==='T').length,9);
   assert.deepEqual(runs.filter(m=>m.name==='GPT-5.6 Luna'&&m.mode==='T').map(m=>m.effort),['Low','Medium','High']);
 });
 
@@ -98,4 +98,10 @@ test('new output runs preserve names, thinking modes and published precision',()
     {name:'MiMo V2.6 Pro',family:'MiMo',mode:'NT',auc:.7257,answerable:68.25,refusal:71.07,rate:58.23}
   ];
   for(const row of expected)assert.deepEqual(data.additionalRuns.find(r=>r.name===row.name),row);
+});
+
+test('aggregate imports include all refusal costs and correct thinking modes',()=>{
+ for(const [name,mode,auc] of [['GLM-5.3 Flash','T',.7205],['GPT-6 Astra','T',.8072],['GPT-6.1 Terra','NT',.7853],['Qwen3.8 Flash','NT',.7465]]){
+  const row=data.additionalRuns.find(r=>r.name===name);assert.equal(row.mode,mode);assert.equal(row.auc,auc);
+ }
 });
