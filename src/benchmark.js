@@ -109,7 +109,7 @@ export function initBenchmark(data,sensitivity){
   $('#refusal-cost-ticks').innerHTML=costs.map((cost,index)=>`<button data-cost-index="${index}" style="--tick:${index/(costs.length-1)*100}%" class="${cost===2?'active':''}" aria-pressed="${cost===2}" aria-label="Set refusal cost to ${cost}">${cost}</button>`).join('');
   function updateCost(index){
     if(index===costIndex)return;
-    costIndex=index;const cost=costs[index];$('#refusal-cost').style.setProperty('--range-progress',`${index/(costs.length-1)*100}%`);$('#refusal-cost').value=index;$('#refusal-cost').setAttribute('aria-valuetext',String(cost));$('#refusal-cost-value').textContent=cost;$('#detail-refusal-cost').textContent=cost;
+    costIndex=index;const cost=costs[index];$('#refusal-cost').style.setProperty('--range-progress',`${index/(costs.length-1)*100}%`);$('#refusal-cost').value=index;$('#refusal-cost').setAttribute('aria-valuetext',String(cost));$('#refusal-cost-value').textContent=cost;
     document.querySelectorAll('[data-cost-index]').forEach(b=>{const active=Number(b.dataset.costIndex)===index;b.classList.toggle('active',active);b.setAttribute('aria-pressed',active);});
     runs.forEach(m=>m.auc=sweep.get(m.id)[index]);drawLeaderboard();inspect(selected);
   }
@@ -121,6 +121,21 @@ export function initBenchmark(data,sensitivity){
     document.querySelectorAll('[data-sort]').forEach(b=>{const active=b.dataset.sort===sortKey;b.parentElement.setAttribute('aria-sort',active?(direction==='desc'?'descending':'ascending'):'none');b.querySelector('span').textContent=active?(direction==='desc'?'↓':'↑'):'↕';});
   }
   document.querySelectorAll('[data-sort]').forEach(b=>b.addEventListener('click',()=>{if(sortKey===b.dataset.sort)direction=direction==='desc'?'asc':'desc';else{sortKey=b.dataset.sort;direction=sortKey==='name'?'asc':'desc';}drawLeaderboard();}));
+  const metricTip=document.createElement('div');
+  metricTip.className='metric-tooltip';metricTip.id='metric-tooltip';metricTip.role='tooltip';metricTip.hidden=true;document.body.append(metricTip);
+  function hideMetricTip(){metricTip.hidden=true;document.querySelectorAll('[data-metric-help]').forEach(b=>b.removeAttribute('aria-describedby'));}
+  document.querySelectorAll('[data-metric-help]').forEach(button=>{
+    const show=()=>{
+      metricTip.textContent=button.dataset.metricHelp;metricTip.hidden=false;button.setAttribute('aria-describedby',metricTip.id);
+      const r=button.getBoundingClientRect(),tip=metricTip.getBoundingClientRect();
+      metricTip.style.left=Math.max(12,Math.min(innerWidth-tip.width-12,r.x+r.width/2-tip.width/2))+'px';
+      metricTip.style.top=(r.top>tip.height+16?r.top-tip.height-10:r.bottom+10)+'px';
+    };
+    button.addEventListener('pointerenter',show);button.addEventListener('pointerleave',hideMetricTip);
+    button.addEventListener('focus',show);button.addEventListener('blur',hideMetricTip);
+    button.addEventListener('keydown',e=>{if(e.key==='Escape')hideMetricTip();});
+  });
+  document.addEventListener('scroll',hideMetricTip,true);addEventListener('resize',hideMetricTip);
   $('#model-search').addEventListener('input',drawLeaderboard);
   $('#export-leaderboard').addEventListener('click',()=>downloadCSV([['Model','Mode','Thinking effort','Family','Refusal cost','UtilityAUC','Answerable accuracy (%)','Refusal accuracy (%)','Answer rate (%)'],...current().map(m=>[m.name,m.mode,m.effort||'',m.family,costs[costIndex],m.auc,m.answerable,m.refusal,m.rate])],'utilitybench-leaderboard.csv'));
   renderFilters();drawLeaderboard();inspect(selected);new ResizeObserver(scheduleScatter).observe(svg);

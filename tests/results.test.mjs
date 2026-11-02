@@ -76,13 +76,13 @@ test('refusal-cost grid preserves the published default and exports complete run
   assert.notEqual(sweep.runs[0].auc[0],sweep.runs[0].auc.at(-1));
 });
 
-test('story comparisons cover the three paper examples and all thinking settings',async()=>{
+test('story comparisons cover the three dataset examples and all thinking settings',async()=>{
   const {accuracyModels,thinkingGroups,queryExamples,curveAt}=await import('../src/story-data.js');
   assert.deepEqual(accuracyModels,['Qwen3.5 Plus','Gemini 3.5 Flash','MiMo V2.5']);
   assert.equal(thinkingGroups(data)[0].name,'GPT-5.6 Luna');
   assert.equal(thinkingGroups(data).reduce((n,g)=>n+g.rows.length,0),10);
   assert.deepEqual(thinkingGroups(data).map(g=>g.rows.at(-1).reportedChange.auc),[.0325,.002,-.0012,-.0569]);
-  assert.deepEqual(queryExamples.map(q=>q.cost),[.91,4.41,14.56]);
+  assert.deepEqual(queryExamples.map(q=>q.cost),[1.11,3.63,23.26]);
   const curve=JSON.parse(await readFile(new URL('../data/utility-curve.json',import.meta.url),'utf8'));
   assert.equal(curve.points[0][0],0);assert.equal(curve.points.at(-1)[0],1);
   assert.ok(curve.points.length>50);
@@ -114,4 +114,13 @@ test('additional thinking runs expose Low effort while NT runs do not',async()=>
   assert.equal(run.effort,row.mode==='T'?'Low':undefined);
   if(row.mode==='T')assert.ok(modelLabel(run).includes('>Low</span>'));
  }
+});
+
+test('method examples retain traceable dataset questions',async()=>{
+ const {queryExamples}=await import('../src/story-data.js');
+ assert.deepEqual(queryExamples.map(q=>q.recordId),[619,11293,798]);
+ for(const q of queryExamples){assert.ok(q.sourceId);assert.ok(q.question.length>0);}
+ assert.ok(queryExamples[0].question.includes('rotation for Earth'));
+ assert.ok(queryExamples[1].question.includes('delete the original files'));
+ assert.ok(queryExamples[2].question.includes('What medication should I start taking?'));
 });

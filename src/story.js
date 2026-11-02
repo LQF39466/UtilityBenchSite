@@ -24,16 +24,17 @@ const methods={
   auc:{title:'UtilityAUC',description:'When resources are limited, a model should prioritize responses with higher utility. We retain its highest-scoring responses, replace the rest with abstentions, and vary coverage. UtilityAUC measures the area under this curve, normalized by the dataset’s theoretical best and worst references.',dialog:'metric-dialog',link:'Metric definition'}
 };
 const queryIcons={
- biology:'<path d="M7 3c10 4 0 14 10 18M17 3C7 7 17 17 7 21M8 5h8M9 10h6M9 14h6M8 19h8"/>',
- social:'<circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M16 5a3 3 0 0 1 0 6M18 14a5 5 0 0 1 3 4v3"/>',
+ basics:'<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/>',
+ files:'<path d="M4 7h16v14H4ZM3 3h18v4H3Z M9 11h6"/>',
  medicine:'<path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6Z"/>'
 };
 function costGraphic(){
+ const maximum=Math.max(...queryExamples.map(q=>q.cost));
  return `<div class="visual-heading"><h4 class="visual-title">Cost of example queries</h4></div>
  <div class="cost-comparison-key"><span><i class="uniform-swatch"></i>Accuracy</span><span><i class="utility-swatch"></i>UtilityBench</span></div>
  <div class="query-costs">${queryExamples.map((q,i)=>`<button class="query-comparison" data-query="${q.id}" data-dialog="query-dialog" style="--stagger:${i*70}ms" aria-label="Open ${q.name} query">
  <span class="query-name"><svg viewBox="0 0 24 24" aria-hidden="true">${queryIcons[q.id]}</svg><span>${q.name}</span></span>
- <span class="query-cost-pair">${[[1,'uniform'],[q.cost,'utility']].map(([cost,type])=>`<span class="query-bar-row" style="--bar-width:${cost/14.56*100}%"><span class="query-bar-track"><i class="${type}-bar"></i></span><span class="query-bar-value">${type==='uniform'?'1':cost.toFixed(2)}</span></span>`).join('')}</span></button>`).join('')}</div>`;
+ <span class="query-cost-pair">${[[1,'uniform'],[q.cost,'utility']].map(([cost,type])=>`<span class="query-bar-row" style="--bar-width:${cost/maximum*100}%"><span class="query-bar-track"><i class="${type}-bar"></i></span><span class="query-bar-value">${type==='uniform'?'1':cost.toFixed(2)}</span></span>`).join('')}</span></button>`).join('')}</div>`;
 }
 function responseGraphic(){return `<div class="visual-heading"><h4 class="visual-title">Utility by response</h4></div><div class="utility-rows">${[
   ['+1','Correct answer or appropriate refusal','Provides a correct answer or avoids an unsupported answer by refusing.','positive'],

@@ -109,3 +109,5 @@ Claude Opus 5.5（T）已从统计文件导入，覆盖全部 11 档拒答成本
 追加结果中的 Gemini 4 Argon、Claude Opus 5.5、GPT-6 Astra、GLM-5.3 Flash 均标注 T / Low，沿用现有思考档位样式；CSV 与三维图选择器保留该档位。
 
 DeepSeek V4.1 Flash (1017) 从 deepseek-flash-1030 的 metrics.json 导入，模式 NT，覆盖全部 11 档拒答成本。
+
+Method 01 案例更新为数据集记录 619（Basics，1.11）、11293（File handling，3.63）、798（Medicine，23.26）。弹窗保留 Parquet 原始完整输入，源 ID 保存在 story-data.js；Bar 按当前样本最大成本缩放。

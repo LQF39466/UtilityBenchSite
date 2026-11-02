@@ -75,3 +75,6 @@ math,.math-token,.math-variable,.metric-equation,.utility-outcomes dd,.outcome s
 .filter-select-all:hover{background:#ffffff08;border-color:#b3a9c44d;color:var(--ink)}
 .copy-button{min-width:88px;transition:color .18s}.copy-button[data-copy-state=copied]{color:#d9c2f4}
 .evaluation-demo .resource-icon{display:inline-flex;align-items:center;justify-content:center;width:22px;min-width:22px;height:22px}.evaluation-demo .resource-icon svg{width:21px;height:21px}
+.metric-tooltip{position:fixed;z-index:100;max-width:min(340px,calc(100vw - 24px));padding:13px 16px;border:1px solid #bba0df50;border-radius:7px;background:#18151ff5;box-shadow:0 8px 26px #0005;color:#e0d5eb;font:18px/1.45 var(--ui-font);pointer-events:none;animation:metric-tip-in .15s ease-out}
+@keyframes metric-tip-in{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.metric-tooltip{animation:none}}
