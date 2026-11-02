@@ -6,7 +6,7 @@ export function initPager(){
   const motion=matchMedia('(prefers-reduced-motion: reduce)'),phone=matchMedia('(max-width:760px)');
   const footer=document.querySelector('.footer');
   if(footer)pages.at(-1).append(footer);
-  const labels=['Home','Leaderboard','Dataset','Method','Findings','Usage','Citations'];
+  const labels=['Home','Leaderboard','Dataset','Method','Findings','Get started','Citations'];
   const nav=document.createElement('nav');nav.className='page-nav';nav.setAttribute('aria-label','Page navigation');
   nav.innerHTML=pages.map((p,i)=>`<button type="button" data-page="${i}" aria-label="${labels[i]}" aria-controls="${p.id}"><span class="page-dot" aria-hidden="true"></span><span class="page-nav-label" aria-hidden="true">${labels[i]}</span></button>`).join('');
   document.body.append(nav);

@@ -3,11 +3,11 @@
 export const findingCopy={
   accuracy:{
     title:'Similar accuracy can yield different utility.',
-    text:'Proximity on either accuracy axis does not imply similar UtilityAUC. Qwen3.5 Plus, Gemini 3.5 Flash, and MiMo V2.5 have nearly identical answerable accuracies, yet their UtilityAUC scores differ substantially.'
+    text:'Qwen3.5 Plus, Gemini 3.5 Flash, and MiMo V2.5 all achieve about 61% accuracy on answerable questions. Yet their UtilityAUC scores range from 0.7477 to 0.8202. Accuracy alone misses differences in where they make mistakes and when they refuse.'
   },
   thinking:{
-    title:'UtilityAUC does not improve consistently.',
-    text:'Enabling thinking consistently improves answerable accuracy but also increases Answer Rate and reduces refusal-required accuracy. The utility gains from solving more answerable queries can be offset by the costs of incorrectly answering queries that require refusal.'
+    title:'More thinking does not always mean better decisions.',
+    text:'Across the four LLMs tested, thinking improves answer accuracy but also makes them more willing to answer questions that require refusal. For MiMo V2.5, accuracy rises from 60.49% to 73.67%, while UtilityAUC falls from 0.7477 to 0.6908.'
   },
   prompting:{
     title:'Refusal hints change answering behavior.',
@@ -15,7 +15,7 @@ export const findingCopy={
   },
   policies:{
     title:'GPT vs Gemini',
-    text:"To identify what drives the UtilityAUC difference, we conduct an in-depth analysis by comparing Gemini 3.6 Flash to GPT-5.6 Sol. We find that GPT-5.6 Sol's higher Answer Rate gives it an advantage in domains with lower average consequence costs, but exposes it to larger utility losses when errors become more consequential. In contrast, Gemini 3.6 Flash adopts a more conservative answering strategy, avoiding more high-consequence errors and gaining a larger advantage on refusal-required queries."
+    text:"GPT-5.6 Sol's higher Answer Rate gives it an advantage in domains with lower average consequence costs, but exposes it to larger utility losses when errors become more consequential. In contrast, Gemini 3.6 Flash adopts a more conservative answering strategy, avoiding more high-consequence errors and gaining a larger advantage on refusal-required queries."
   }
 };
 

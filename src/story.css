@@ -37,3 +37,4 @@
  .query-costs,.utility-rows{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:repeat(3,minmax(0,1fr));justify-content:stretch;gap:0;border-block:1px solid #baa1db1d}
  .query-comparison,.utility-row{min-height:0;padding-block:0;align-items:center}
 }
+@media(min-width:761px){.method-explanation h3{flex-shrink:0}.method-explanation #method-description{flex:1;min-height:0;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#745b8a transparent}.method-explanation .text-link{flex-shrink:0}}

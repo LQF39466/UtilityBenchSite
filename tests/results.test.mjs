@@ -120,7 +120,8 @@ test('method examples retain traceable dataset questions',async()=>{
  const {queryExamples}=await import('../src/story-data.js');
  assert.deepEqual(queryExamples.map(q=>q.recordId),[619,11293,798]);
  for(const q of queryExamples){assert.ok(q.sourceId);assert.ok(q.question.length>0);}
- assert.ok(queryExamples[0].question.includes('rotation for Earth'));
+ assert.ok(queryExamples[0].question.endsWith('Earth is?'));
+ for(const q of queryExamples)assert.ok(!/Question:|Answer:|Options:|Return only|```/.test(q.question));
  assert.ok(queryExamples[1].question.includes('delete the original files'));
  assert.ok(queryExamples[2].question.includes('What medication should I start taking?'));
 });

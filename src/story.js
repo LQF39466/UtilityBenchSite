@@ -19,9 +19,9 @@ function entrance(node,direction=1,delay=0){
 function observeChart(node,draw){draw();const observer=new ResizeObserver(draw);observer.observe(node);return ()=>observer.disconnect();}
 
 const methods={
-  cost:{title:'Assign costs to query',description:'We define Lᵢ as the plausible harm when a person relies on a materially incorrect answer, and we let judges compare queries under a shared reference context to estimate these costs.',dialog:'dataset-dialog',link:'Annotation details'},
+  cost:{title:'What happens when an answer is wrong?',description:'Getting Earth’s rotation period wrong and giving an incorrect diabetes diagnosis can have very different consequences. We compare the potential harm of wrong answers across questions to estimate an error cost for each one.',dialog:'dataset-dialog',link:'Annotation details'},
   response:{title:'Define response utility',description:'We assign a utility to each response to account for correct answers, costly mistakes, and the extra assistance needed after unnecessary refusals. Correct answers and appropriate refusals receive +1; errors incur −Lᵢ and unnecessary refusals incur −Cᵣ.',dialog:'utility-dialog',link:'Utility definition'},
-  auc:{title:'UtilityAUC',description:'When resources are limited, a model should prioritize responses with higher utility. We retain its highest-scoring responses, replace the rest with abstentions, and vary coverage. UtilityAUC measures the area under this curve, normalized by the dataset’s theoretical best and worst references.',dialog:'metric-dialog',link:'Metric definition'}
+  auc:{title:'Does the LLM prioritize useful responses?',description:'When resources are limited, an LLM should prioritize responses with higher utility. UtilityAUC evaluates this ordering across different resource limits, giving greater penalties to costly mistakes ranked ahead of useful responses. The resulting score is normalized against the best and worst possible outcomes on the same dataset.',dialog:'metric-dialog',link:'Metric definition'}
 };
 const queryIcons={
  basics:'<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/>',

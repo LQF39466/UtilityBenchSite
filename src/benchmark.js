@@ -135,6 +135,7 @@ export function initBenchmark(data,sensitivity){
     button.addEventListener('focus',show);button.addEventListener('blur',hideMetricTip);
     button.addEventListener('keydown',e=>{if(e.key==='Escape')hideMetricTip();});
   });
+  document.addEventListener('click',event=>{if(event.target.closest('[data-dialog]'))hideMetricTip();});
   document.addEventListener('scroll',hideMetricTip,true);addEventListener('resize',hideMetricTip);
   $('#model-search').addEventListener('input',drawLeaderboard);
   $('#export-leaderboard').addEventListener('click',()=>downloadCSV([['Model','Mode','Thinking effort','Family','Refusal cost','UtilityAUC','Answerable accuracy (%)','Refusal accuracy (%)','Answer rate (%)'],...current().map(m=>[m.name,m.mode,m.effort||'',m.family,costs[costIndex],m.auc,m.answerable,m.refusal,m.rate])],'utilitybench-leaderboard.csv'));
