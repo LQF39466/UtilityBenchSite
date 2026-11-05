@@ -9,25 +9,25 @@
   <meta property="og:description" content="UtilityBench evaluates leading LLMs beyond accuracy, accounting for the consequences of errors across 15,000 questions.">
   <meta property="og:type" content="website">
   <title>UtilityBench</title>
-  <link rel="icon" href="./assets/logo.png" type="image/png">
+  <link rel="preload" as="image" type="image/webp" href="./assets/logo-950.webp" imagesrcset="./assets/logo-320.webp 320w, ./assets/logo-640.webp 640w, ./assets/logo-950.webp 950w" imagesizes="(max-width: 760px) 65vw, 570px" fetchpriority="high">
+  <link rel="icon" href="./assets/favicon.png" type="image/png">
   <link rel="stylesheet" href="./src/style.css">
   <link rel="stylesheet" href="./src/story.css">
   <link rel="stylesheet" href="./src/findings.css">
   <link rel="stylesheet" href="./src/pager.css">
-  <link rel="preload" href="./assets/logo.png" as="image">
   <script type="module" src="./src/main.js"></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
   <div class="scroll-progress" aria-hidden="true"></div>
   <header class="header">
-    <a class="brand" href="./" aria-label="UtilityBench home"><img src="./assets/logo.png" alt="" width="30" height="26">UtilityBench</a>
+    <a class="brand" href="./" aria-label="UtilityBench home"><img src="./assets/logo-brand.webp" alt="" width="30" height="26" decoding="async">UtilityBench</a>
     <nav aria-label="Main navigation"><a href="#results"><span class="desktop-nav">Leaderboard</span><span class="mobile-nav">Results</span></a><a href="#dataset">Dataset</a><a href="#method">Method</a><a href="#usage"><span class="desktop-nav">Get started</span><span class="mobile-nav">Start</span></a></nav>
   </header>
   <main id="main">
     <section class="hero page-screen" id="top" aria-labelledby="hero-title"><div class="screen hero-screen">
       <div class="hero-grid" aria-hidden="true"></div>
-      <div class="hero-art" data-parallax="0.08" aria-hidden="true"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="art-cross cross-a">+</div><div class="art-cross cross-b">+</div><img class="hero-logo" src="./assets/logo.png" alt="" width="952" height="768"></div>
+      <div class="hero-art" data-parallax="0.08" aria-hidden="true"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="art-cross cross-a">+</div><div class="art-cross cross-b">+</div><img class="hero-logo" src="./assets/logo-950.webp" srcset="./assets/logo-320.webp 320w, ./assets/logo-640.webp 640w, ./assets/logo-950.webp 950w" sizes="(max-width: 760px) 65vw, 570px" alt="" width="950" height="763" loading="eager" fetchpriority="high" decoding="async"></div>
       <div class="hero-copy"><div class="hero-title-block"><h1 id="hero-title">Utility<span>Bench</span><span class="title-period">.</span></h1></div><div class="hero-divider" aria-hidden="true"></div><p class="hero-description">As LLMs power more agents, their mistakes carry real-world consequences. UtilityBench evaluates LLMs by the costs of those errors. Across leading LLMs, we find that <strong class="hero-highlight">higher accuracy does not always mean higher utility</strong>.</p><div class="resource-links" data-resources></div></div>
       <div class="hero-bottom"><span class="scroll-arrow" aria-hidden="true">↓</span><span>Scroll down to explore</span></div>
     </div></section>
@@ -140,6 +140,6 @@
 
   <dialog class="detail-dialog research-dialog prompt-instructions-dialog" id="prompting-dialog" aria-labelledby="prompting-dialog-title"><div class="dialog-heading"><h2 id="prompting-dialog-title">Prompting instructions</h2><button data-close aria-label="Close prompting instructions">×</button></div><div class="dialog-body" id="prompt-instructions"></div></dialog>
 
-  <footer class="footer"><a class="brand" href="#top"><img src="./assets/logo.png" alt="" width="30" height="26">UtilityBench</a><span>© 2026 UtilityBench</span></footer>
+  <footer class="footer"><a class="brand" href="#top"><img src="./assets/logo-brand.webp" alt="" width="30" height="26" decoding="async">UtilityBench</a><span>© 2026 UtilityBench</span></footer>
   <div class="toast" role="status" aria-live="polite"></div>
 </body></html>
