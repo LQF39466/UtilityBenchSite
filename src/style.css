@@ -79,7 +79,9 @@ math,.math-token,.math-variable,.metric-equation,.utility-outcomes dd,.outcome s
 @keyframes metric-tip-in{from{opacity:0;transform:translateY(0.1875rem)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.metric-tooltip{animation:none}}
 .hero-description .hero-highlight{color:#d0aff5;font-weight:500}
-.refusal-cost-help{cursor:pointer;display:inline-flex;align-items:center;padding:0;color:inherit;background:none}
+.refusal-cost-control .refusal-cost-label{flex:0 0 auto}
+.refusal-cost-help{cursor:pointer;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;width:32px;height:32px;padding:0;color:#b6a4ce;background:none;border-radius:50%;transition:color .18s,background .18s}
+.refusal-cost-help svg{width:24px;height:24px}.refusal-cost-help:hover{color:#e0c7fc;background:#b58cde15}
 .price-preferences{display:grid;gap:1.125rem;margin:1.625rem 0}.price-preferences section{padding:1.375rem 1.5rem;border:1px solid #bba0df35;border-left:0.1875rem solid #bba0df;border-radius:0.4375rem;background:#bba0df08}.price-preferences h3{font-size:1.5rem;margin:0 0 0.75rem}.price-preferences p{margin:0}
 
 /* Design units follow the CSS viewport, independent of display pixel density.
