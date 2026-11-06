@@ -1,3 +1,4 @@
+import {initBarLeaderboard} from './bar-leaderboard.js';
 import {downloadCSV,escapeHTML as esc} from './common.js';
 import {colors,sortModels} from './results.js';
 import {modelLabel,benchmarkRuns} from './models.js';
@@ -12,7 +13,8 @@ export function initBenchmark(data,sensitivity){
   function scheduleScatter(){if(!scatterFrame)scatterFrame=requestAnimationFrame(()=>{scatterFrame=0;drawScatter();});}
   const svg=$('#scatter'),tabs=[...document.querySelectorAll('[data-benchmark-view]')];
   $('#model-select').innerHTML=runs.map(m=>`<option value="${esc(m.id)}">${esc(m.name)} · ${m.mode}${m.effort?' / '+m.effort:''}</option>`).join('');
-  function switchView(id){tabs.forEach(b=>{const active=b.dataset.benchmarkView===id;b.setAttribute('aria-selected',active);b.tabIndex=active?0:-1;document.getElementById(b.dataset.benchmarkView).hidden=!active;});if(id==='overview')drawScatter();}
+  const bars=initBarLeaderboard(()=>runs,()=>costs[costIndex]);
+  function switchView(id){tabs.forEach(b=>{const active=b.dataset.benchmarkView===id;b.setAttribute('aria-selected',active);b.tabIndex=active?0:-1;document.getElementById(b.dataset.benchmarkView).hidden=!active;});if(id==='overview')drawScatter();if(id==='ranking-bars')bars.render();$('.results-screen').classList.toggle('bars-view-active',id==='ranking-bars');}
   tabs.forEach((b,i)=>{b.addEventListener('click',()=>switchView(b.dataset.benchmarkView));b.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();const next=tabs[e.key==='Home'?0:e.key==='End'?tabs.length-1:(i+1)%tabs.length];switchView(next.dataset.benchmarkView);next.focus();}});});
   function inspect(id){
     selected=id;const m=runs.find(m=>m.id===id);
@@ -111,11 +113,11 @@ export function initBenchmark(data,sensitivity){
     if(index===costIndex)return;
     costIndex=index;const cost=costs[index];$('#refusal-cost').style.setProperty('--range-progress',`${index/(costs.length-1)*100}%`);$('#refusal-cost').value=index;$('#refusal-cost').setAttribute('aria-valuetext',String(cost));$('#refusal-cost-value').textContent=cost;
     document.querySelectorAll('[data-cost-index]').forEach(b=>{const active=Number(b.dataset.costIndex)===index;b.classList.toggle('active',active);b.setAttribute('aria-pressed',active);});
-    runs.forEach(m=>m.auc=sweep.get(m.id)[index]);drawLeaderboard();inspect(selected);
+    runs.forEach(m=>m.auc=sweep.get(m.id)[index]);drawLeaderboard(true);inspect(selected);
   }
   $('#refusal-cost').addEventListener('input',e=>updateCost(Number(e.target.value)));
   $('#refusal-cost-ticks').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>updateCost(Number(b.dataset.costIndex))));
-  function drawLeaderboard(){const rows=current(),ranks=new Map(sortModels(scope()).map((m,i)=>[m.id,i+1]));$('#no-models').hidden=rows.length>0;
+  function drawLeaderboard(animate=false){bars.render(animate);const rows=current(),ranks=new Map(sortModels(scope()).map((m,i)=>[m.id,i+1]));$('#no-models').hidden=rows.length>0;
     $('#leaderboard-table tbody').innerHTML=rows.map(m=>`<tr class="${m.id===selected?'selected-row':''}"><td class="rank-cell">${String(ranks.get(m.id)).padStart(2,'0')}</td><td class="model-cell"><button data-inspect="${esc(m.id)}" aria-pressed="${m.id===selected}" aria-label="Inspect ${esc(m.name)} ${m.mode} in 3D">${modelLabel(m)}</button></td><td class="auc-cell" style="--bar:${(m.auc-.6)/.25}">${m.auc.toFixed(4)}</td><td>${m.answerable.toFixed(2)}%</td><td>${m.refusal.toFixed(2)}%</td><td>${m.rate.toFixed(2)}%</td></tr>`).join('');
     $('#leaderboard-table').querySelectorAll('[data-inspect]').forEach(b=>b.addEventListener('click',()=>{inspect(b.dataset.inspect);switchView('overview');}));
     document.querySelectorAll('[data-sort]').forEach(b=>{const active=b.dataset.sort===sortKey;b.parentElement.setAttribute('aria-sort',active?(direction==='desc'?'descending':'ascending'):'none');b.querySelector('span').textContent=active?(direction==='desc'?'↓':'↑'):'↕';});
@@ -139,5 +141,5 @@ export function initBenchmark(data,sensitivity){
   document.addEventListener('scroll',hideMetricTip,true);addEventListener('resize',hideMetricTip);
   $('#model-search').addEventListener('input',drawLeaderboard);
   $('#export-leaderboard').addEventListener('click',()=>downloadCSV([['Model','Mode','Thinking effort','Family','Refusal cost','UtilityAUC','Answerable accuracy (%)','Refusal accuracy (%)','Answer rate (%)'],...current().map(m=>[m.name,m.mode,m.effort||'',m.family,costs[costIndex],m.auc,m.answerable,m.refusal,m.rate])],'utilitybench-leaderboard.csv'));
-  renderFilters();drawLeaderboard();inspect(selected);new ResizeObserver(scheduleScatter).observe(svg);
+  switchView('ranking-bars');renderFilters();drawLeaderboard();inspect(selected);new ResizeObserver(scheduleScatter).observe(svg);
 }

@@ -1,0 +1,11 @@
+.ranking-bars{display:flex;flex:1;min-height:0;min-width:0;flex-direction:column;margin-top:1.25rem;border:1px solid var(--line);border-radius:.625rem;background:#101119;overflow:hidden}
+.ranking-chart-heading{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;padding:1.25rem 1.5rem 1rem;flex-shrink:0}
+.ranking-chart-key{display:flex;align-items:center;flex-wrap:wrap;gap:.75rem 1.75rem;color:#bdb5cc;font-size:1.125rem}.ranking-chart-key>span{display:flex;align-items:center;gap:.5rem}.chart-thinking-badge{display:inline-grid;place-items:center;background:#b58cde;color:#111119;width:1.25rem;height:1.5rem;border-radius:3px;font-size:1rem;line-height:1;font-weight:700}
+.ranking-brand{display:flex;align-items:center;gap:.625rem;flex-shrink:0;font-size:1.5rem;font-weight:600;letter-spacing:-.05rem;white-space:nowrap}.ranking-brand img{width:2.375rem;height:auto}.ranking-brand strong{color:#bf9ae5;font-weight:inherit}
+.ranking-scroll{overflow-x:auto;overflow-y:hidden;min-height:0;flex:1;scrollbar-width:thin;scrollbar-color:#8968ad #1a1622;cursor:grab;overscroll-behavior-x:contain;touch-action:pan-x pan-y;user-select:none}.ranking-scroll.is-dragging{cursor:grabbing}.ranking-scroll svg{display:block;max-width:none}.ranking-scroll:focus-visible{outline-offset:-3px}
+
+.bars-view-active .results-footnote .mode-key{visibility:hidden}
+@media(max-width:760px){.results-screen .section-heading{align-items:center}.results-screen .benchmark-tabs{max-width:100%;min-height:40px}.results-screen .benchmark-tabs>button{font-size:14px;padding:8px 10px}.ranking-bars{flex:none;height:520px;margin-top:1rem}.ranking-chart-heading{align-items:flex-start;padding:16px 14px;gap:10px}.ranking-chart-key{font-size:14px;gap:10px}.ranking-brand{font-size:17px;gap:4px}.ranking-brand img{width:24px}.bars-view-active .results-footnote{flex-direction:row;justify-content:flex-end}.bars-view-active .results-footnote .mode-key{display:none}}
+
+.ranking-export-menu{position:fixed;z-index:90;min-width:170px;padding:6px;border:1px solid #bba0df50;border-radius:8px;background:#1a1722;box-shadow:0 12px 40px #0008}
+.ranking-export-menu button{display:block;width:100%;padding:10px 14px;text-align:left;font-size:16px;border-radius:4px}.ranking-export-menu button:hover,.ranking-export-menu button:focus-visible{background:#b58cde24;outline:none}
